@@ -12,8 +12,14 @@
 
 <body>
     <div class="container">
-        <a class="login-button">Login with GitHub</a></li>
+        <a class="login-button" onclick="loginWithGithub()">Login with GitHub</a></li>
     </div>
 </body>
 
 </html>
+
+<script>
+    function loginWithGithub() {
+        window.location = '/.auth/login/github';
+    }
+</script>
