@@ -5,6 +5,10 @@ const usernameElement = document.querySelector('#username');
 
 async function getUser() {
     // TODO
+    const response = await fetch('/.auth/me');
+    const payload = await response.json();
+
+    username.innerHTML = `Hi, ${payload.clientPrincipal.userDetails}`;
 }
 
 async function updateTask() {
