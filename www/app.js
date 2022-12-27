@@ -3,6 +3,8 @@ const taskListElement = document.querySelector('#tasksList');
 const empty = document.querySelector('#empty');
 const usernameElement = document.querySelector('#username');
 
+let nbTasks = 0;
+
 async function getUser() {
     // TODO
     const response = await fetch('/.auth/me');
@@ -11,8 +13,18 @@ async function getUser() {
     username.innerHTML = `Hi, ${payload.clientPrincipal.userDetails}`;
 }
 
-async function updateTask() {
-    // TODO
+async function updateTask(e) {
+    // TO DO
+    const taskId = this.closest('li').getAttribute('id');
+    const status = e.target.checked ? 'checked' : '';
+    
+    const response = await fetch(`/api/tasks/${taskId}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ status })
+    });
 }
 
 taskformElement.addEventListener('submit', async (e) => {
